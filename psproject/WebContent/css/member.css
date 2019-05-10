@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+/* signup1 */
+.terms_main textarea {width: 100%; height: 300px; padding: 8px; font-family:'dotum'; font-size: .7em;}
+.t_input {text-align: right;}
+.t_input label {margin:0 15px 5px;}
+.t_buttons {text-align: center;}
+.t_buttons button {width: 49%;}
+.t_buttons a:first-child button {background: #eee; color: #333;}
+
+/* signup2 */
+.join_choice div {width: 50%; display: inline-block; text-align: center;}
+.join_choice button {width: 80%;}
+.join_choice div:last-child button {background: #3f51b5d1; color: white;}
+
+/* signup3 */
+.signup-table {width: 100%;}
+.signup-table th {vertical-align: top; padding-top: 11px;}
+.signup-table td {width: 500px; padding: 10px 0;}
+.signup-table td input {width: 100%; padding:0 10px;}
+.signup-table tr td:nth-child(1), .signup-table tr td:nth-child(4) {text-align: center;}
+
+.signup-table table {width: 100%; font-size: 12px; display: none; border: 5px;}
+.signup-table table th {text-align: center; width: 6%;}
+.signup-table table th + th {width: 42%;}
+.signup-table table th + th + th + th {width: 10%;}
+.signup-table table th, .signup-table table td {border-bottom: 1px solid #ddd;}
+
+.signup-table table td {cursor: pointer;}
+.signup-table input[name*="address"] {display: none; margin-bottom: 5px;}
+
+.err-msg {margin: 0; color: red; font-size: 11px; font-family: dotum; height: 22px; visibility: hidden; height: 22px;}
+.content .text {width: 70%;}
+.content .btn {width: 25%; margin: 5px 0 0 20px;}
+
+.join_complete {width: 400px; margin: 0 auto; height: 400px;text-align: center;}
+
+/* login */
+.login_main {width: 500px; height: 500px; margin: 0 auto;}
+.login_main h1 {text-align: center;}
+.login_table {width: 100%;}
+.login_main input {width: 100%; height:45px; padding: 0 10px; border-radius: 3px;}
+.login_main button {width: 100%; background-color: #e55e54; color:white; border: 0; border-radius: 3px; padding: 3px 0; cursor: pointer;}
+.login_button {font-size:20px;}

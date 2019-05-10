@@ -1,86 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html >
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html >
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>NolDaGa &mdash; 놀다가</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="images/icon/favicon.ico" rel="icon">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/search.css">
-    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="fonts/jua/css/jua.css">
-    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
-    <!-- Theme Style -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-<script>
-window.onload = function(){
-	var frm = document.frm;
-	frm.onsubmit = function(){
-		if(frm.email.value == ''){
-			alert("이메일이 입력되지 않았습니다.")
-			frm.email.focus();
-			return false;
-		}
-		if(frm.pw.value == ''){
-			alert("비밀번호가 입력되지 않았습니다.")
-			frm.pw.focus();
-			return false;
-		}
-	}
-}
-</script>
-<c:if test="${param.massage=='fail'}">
+	<jsp:include page="common/member_header.jsp"/>
+	<c:if test="${param.message=='fail'}">
+		<script>
+			alert("로그인에 실패했습니다")
+			location.href="login";
+		</script>
+	</c:if>
 	<script>
-		alert("로그인에 실패했습니다")
-		location.href="login";
+	// 유효성 검증
+	$(() => {
+		$(document.frm).submit(function(e) {
+			$(".err-msg").msgHide();
+			
+			var emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			
+			if ($(this.email).val() == '') {
+				$(this.email).next().msgShow("이메일을 입력하세요.");
+				e.preventDefault();
+			} 
+			else if (!emailRegExp.test($(this.email).val())) {
+				$(this.email).next().msgShow("유효한 이메일을 입력하세요.");
+				e.preventDefault();
+			}
+			
+			if ($(this.pw).val() == '') {
+				$(this.pw).next().msgShow("비밀번호를 입력하세요.");
+				e.preventDefault();
+			}
+			else if ($(this.pw).val().length < 4) {
+				$(this.pw).next().msgShow("비밀번호를 4글자 이상 입력하세요.");
+				e.preventDefault();
+			}
+		})
+	});
 	</script>
-
-	
-</c:if>
-<style>
-.login_main{ width: 100%; height: 500px}
-.login_main input{border-color:#6610f2;width: 500px; height:45px;margin-bottom: 10px}
-.login_main button {width: 500px; height:70px; background-color: #6610f2 ;color:white;}
-.login_main button b{margin:0 auto; width: 200px}
-.login_table{margin:0 auto; }
-.login_main p{color: #6610f2 ;text-align:center; font-size:70px}
-.login_button{ font-size:20px}
-
-</style>
 </head>
 <body>
-  <jsp:include page="../header.jsp"></jsp:include>
 <div id="wrapper">
-	<section>
-        <div class="login_main">	
-		<form method="post" name="frm">
-	    <p> NolDaGa </p>
-		<table class="login_table">
-			<tr>
-				<td><input type="text" name="email" placeholder="이메일을 입력하세요." autofocus="autofocus"></td>
-			</tr>
-			<tr>
-				<td><input type="password" name="pw" placeholder="4글자 이상의 비밀번호를 입력하세요."></td>
-			</tr>
-			<tr>
-				<td>
-				<button class="login_button"><b>Log-in</b></button>
-				</td>
-			</tr>
-			
-		</table>
-
-		</form>
-    </div>
-	</section>
+	<jsp:include page="../header.jsp"/>
+		<section>
+	        <div class="login_main title404">	
+				<form method="post" name="frm">
+			    	<h1 class="logo-text">NolDaGa</h1>
+					<table class="login_table">
+						<tr>
+							<td>
+								<input type="text" name="email" placeholder="이메일을 입력하세요." autofocus="autofocus" id="email">
+								<p class="err-msg" data-target="email">여기에 텍스트</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="password" name="pw" placeholder="4글자 이상의 비밀번호를 입력하세요." id="pw">
+								<p class="err-msg" data-target="pw">여기에 텍스트</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button class="login_button">LOGIN</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+	    	</div>
+		</section>
+	<jsp:include page="../footer.jsp"/>
 </div>
-  <jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

@@ -8,9 +8,6 @@ $(function() {
       $(this).toggleClass('active');
       e.preventDefault();
     });
-    $('.work').on('click',()=>{
-    	alert("준비중입니다.")
-    })
   })
 </script>
 <header role="banner">
@@ -26,9 +23,9 @@ $(function() {
                       <a href="#" class="search-toggle" data-selector="#header-3"></a>
                     </div>
                     <ul class="menu social">
-                      <li><a href="" class="work">고객센터</a></li>
+                      <li><a href="boardList">고객센터</a></li>
                       <c:if test="${member.email ==null}">
-                      <li><a href="terms">회원가입</a></li>
+                      <li><a href="signup1">회원가입</a></li>
                       <li><a href="login">로그인</a></li>
                       </c:if>
                       <c:if test="${member.email !=null}">
@@ -36,8 +33,9 @@ $(function() {
                       <li><a href="logout">로그아웃</a></li>
                       </c:if>
                     </ul>
-                    <form action="search" method="get" class="search-box">
+                    <form action="list.do" method="get" class="search-box">
                       <input type="text" class="text search-input" name="search" placeholder="지역을 입력하세요." />
+                      <input type="hidden" name="type" value="5">
                     </form>
                   </nav>
                 </span>
@@ -61,16 +59,13 @@ $(function() {
                   <a class="nav-link" href="list.do">지역별 펜션</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link work" href="">빈 방 검색</a>
+                  <a class="nav-link" href="list.do?type=2">스파 펜션</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="spa.do">스파 펜션</a>
+                  <a class="nav-link" href="list.do?type=3">풀빌라 펜션</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="full.do">풀빌라 펜션</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="work.do">워크샾/MT 펜션</a>
+                  <a class="nav-link" href="list.do?type=4">워크샾/MT 펜션</a>
                 </li>
               </ul>
             </div>

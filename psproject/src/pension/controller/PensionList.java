@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.util.ConstPool;
+import common.util.Pagination;
+import common.util.Util;
 import pension.dao.PensionDao;
 import pension.vo.PensionVo;
 
@@ -21,6 +24,9 @@ import pension.vo.PensionVo;
  * 
  * -염윤호
  * doPost 삭제함
+ * 
+ * @param type 1 : 전체목록, 2 : 스파, 3 : 풀빌라, 4 : 워크샾, 5 : 전체검색
+ * 
  */
 
 @WebServlet("/list.do")
@@ -28,56 +34,35 @@ public class PensionList extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		req.setCharacterEncoding("UTF-8");
-		String search = req.getParameter("search");
+		int type = Util.getParameterNumber(req.getParameter("type"));
 		
 		PensionDao dao = new PensionDao();
 		List<PensionVo> list = dao.readList();
 		req.setAttribute("list", list);
 		
 		// 첫 페이지 로드시 기본적으로 보여줄 리스트
+		
+		// 1. 일반목록
+		//  -검색어
+		// 2. 검색결과
+		//  -검색어
+		
+		String search = req.getParameter("search");
 		if (search==null) {
 			search = "가평";
 		}
-
+		int page = Util.getParameterNumber(req.getParameter("page"));
 		
-		// 페이징
-		String pageStr = req.getParameter("page");
-		int page = pageStr == null || pageStr.equals("") || pageStr.equals("0") ? 1 : Integer.parseInt(req.getParameter("page"));
-		int rowSize = 12; // 한페이지에 보여줄 개수 
-		int block = 10; // 한페이지에 보여줄 페이징범위
+		int num = dao.selectPensionCount(search, type); // 총게시물 수
 		
-		int toPage = (int)Math.ceil((float)page/block)*block;
-		int fromPage = toPage-9;
+		Pagination pagination = new Pagination(12, 10, num, page);
+		List<PensionVo> items = dao.selectPension(search, type, pagination.getFrom(), pagination.getTo());
 		
-		int from = 1;
-		int to = 12;
-		if (page<=1) {
-			from = 1;
-			to = 12;
-		}else if (page>1) {
-			from = (page*rowSize-12)+1;
-			to = page*rowSize;
-		}
-		
-		List<PensionVo> items = dao.searchGetList(search,from,to);
-		int num = dao.searchGetTotal(search); // 총게시물 수
-		int allPage = (int)Math.ceil(num/(double)rowSize); //페이지수
-		if (toPage>allPage) {
-			toPage = allPage;
-		}
-		
-		req.setAttribute("sear", search);
-		req.setAttribute("page", page);
-		req.setAttribute("search", items);
+		req.setAttribute("type", type);
+		req.setAttribute("search", search);
+		req.setAttribute("items", items);
 		req.setAttribute("num", num);
-		req.setAttribute("fromPage", fromPage);
-		req.setAttribute("toPage", toPage);
-		req.setAttribute("allPage", allPage);
-		req.setAttribute("block", block);
-		req.setAttribute("rowSize", rowSize);
-		RequestDispatcher rd = req.getRequestDispatcher("source/pension/PensionList.jsp");
-		rd.forward(req, resp);
+		req.setAttribute("page", pagination);
+		req.getRequestDispatcher(ConstPool.PENSION_PATH + "/pensionList.jsp").forward(req, resp);
 	}
 }

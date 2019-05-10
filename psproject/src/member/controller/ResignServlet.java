@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import member.service.MemberServiceImpl;
+import member.dao.MemberDao;
 import member.vo.Member;
 
 @WebServlet("/resign")
@@ -25,7 +25,7 @@ public class ResignServlet extends HttpServlet{
 		}
 		
 		Member vo = (Member)session.getAttribute("member");
-		MemberServiceImpl.getInstance().resign(vo.getEmail());
+		new MemberDao().resign(vo.getEmail());
 		session.invalidate();
 		
 		resp.sendRedirect("index");

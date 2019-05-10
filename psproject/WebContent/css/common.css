@@ -2,3 +2,22 @@
 
 .center {text-align: center;}
 .title404 {padding: 300px 0;}
+.logo-text {color: #e55e54; font-size:70px; margin-bottom: 2.5rem;}
+.progress-icon-wrap {height: 80px;}
+.progress-icon-wrap a , .logo-text ~ a {font-size: 30px; color: #e55e54;}
+
+.progress-icon {width: 80px; display: none;}
+.text-overflow {white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+
+/* signup common */
+.content {width: 998px; margin: 0 auto; padding: 30px 0;}
+.content h1 {text-align: center;}
+.content > div {width: 600px; margin: 0 auto;}
+.content button {width: 100%; border: 0; background: #e55e54; border-radius: 5px; box-shadow: 0 0 3px 1px #ddd; cursor: pointer; color: #eee;}
+.join_step {width:675px; height:166px; padding: 0;}
+.join_step li {margin:0 10px; padding-top:10px; border:1px solid; border-radius:50%; width: 130px; height: 130px; float:left; list-style: none; text-align: center;}
+.join_step p:first-child {text-decoration:underline; margin-bottom: 12px; font-family: fantasy;}
+.join_on {background-color:#e55e54; color:white;}
+input::placeholder {opacity: .3;}
+
+html .width100 {width: 100px;}

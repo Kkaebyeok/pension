@@ -21,19 +21,20 @@
   </head>
   <body>
     <div class="wrap">
-      <jsp:include page="header.jsp"></jsp:include>
+      <jsp:include page="header.jsp"/>
       <!-- END header -->
+      <div class="position">
       <section class="site-section pt-5 pb-5">
         <div class="subcontainer">
           <div class="row rollpic">
             <div class="col-md-12 rollpic">
               <div class="owl-carousel owl-theme home-slider">
                 <div>
-                  <a href="spa.do" class="a-block d-flex align-items-center height-lg event phone1" style="background-image: url('images/spa.png');">
+                  <a href="list.do?type=2" class="a-block d-flex align-items-center height-lg event phone1" style="background-image: url('images/spa.png');">
                   </a>
                 </div>
                 <div>
-                  <a href="work.do" class="a-block d-flex align-items-center height-lg event phone2" style="background-image: url('images/workshop.png');">
+                  <a href="list.do?type=4" class="a-block d-flex align-items-center height-lg event phone2" style="background-image: url('images/workshop.png');">
                   </a>
                 </div>
               </div>
@@ -73,7 +74,8 @@
         </div>
         </div>
       </section>
-      <jsp:include page="footer.jsp"></jsp:include>
+      </div>
+      <jsp:include page="footer.jsp"/>
       <!-- END footer -->
     </div>
     <!-- loader -->

@@ -16,10 +16,9 @@
                     <h3>Quick Links</h3>
                     <ul class="list-unstyled">
                       <li><a href="list.do">지역별 펜션</a></li>
-                      <li class="work"><a href="">빈 방 검색</a></li>
-                      <li><a href="spa.do">스파 펜션</a></li>
-                      <li><a href="full.do">풀빌라 펜션</a></li>
-                      <li><a href="work.do">워크샾/MT펜션</a></li>
+                      <li><a href="list.do?type=2">스파 펜션</a></li>
+                      <li><a href="list.do?type=3">풀빌라 펜션</a></li>
+                      <li><a href="list.do?type=4">워크샾/MT펜션</a></li>
                     </ul>
                   </div>
                 </div>

@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.service.MemberServiceImpl;
-import member.vo.Member;
 @WebServlet("/ilikeit")
 public class Ilikeit extends HttpServlet {
 
@@ -19,11 +17,4 @@ public class Ilikeit extends HttpServlet {
 		req.getRequestDispatcher("source/member/ilikeit.jsp").forward(req, resp);
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 }
