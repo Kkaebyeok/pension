@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5 {
   -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1); }
   
-.position {position: relative; top: 150px; background: #fff; box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);}
+
 
 .navbar-nav {
   width: 100%;
@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5 {
   justify-content: space-between;
 }
 header {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -154,7 +154,7 @@ header .navbar {
   .top-bar .search-icon {
     text-align: right; }
 
-.navbar .container > div {
+.navbar {
   border-bottom: 1px solid #e6e6e6; }
   @media (max-width: 767.98px) {
     .navbar .container > div {
@@ -535,6 +535,8 @@ header .navbar {
 
 textarea.form-control {
   height: inherit; }
+
+.subcontainer {height: 300px;}
 
 .btn {
   -webkit-transition: .3s all ease;
@@ -1260,7 +1262,7 @@ blockquote {
 
 .site-footer {
   position: relative;
-  top: 150px;
+  top: 0px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

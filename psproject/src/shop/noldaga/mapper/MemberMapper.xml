@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<select id="isMember" resultType="boolean">
+		SELECT 1 FROM MEMBER WHERE EMAIL = #{email}
+	</select>
+	<update id="authenticate">
+		UPDATE MEMBER SET AUTH = 1 WHERE EMAIL = #{email}
+	</update>
+	<select id="isAuth" resultType="boolean">
+		SELECT 1 FROM MEMBER WHERE EMAIL = #{email} AND AUTH = 1
+	</select>
+	<select id="login" resultType="shop.noldaga.member.vo.MemberVo" parameterType="hashmap">
+		SELECT EMAIL, NAME, RATING, TEL, ADDRESS, PW, auth FROM MEMBER WHERE EMAIL= #{email} AND PW= #{pw} 
+	</select>
+	<insert id="join" parameterType="shop.noldaga.member.vo.MemberVo">
+		INSERT INTO member(email, pw, name, address, tel ,rating) VALUES (#{email}, #{pw}, #{name}, #{address}, #{tel}, #{rating})
+	</insert>
+	<delete id="resign">
+		DELETE MEMBER WHERE EMAIL = #{email}
+	</delete>
+	<insert id="mypage" parameterType="shop.noldaga.member.vo.MemberVo">
+		UPDATE MEMBER SET NAME = #{name}, TEL = #{tel}, ADDRESS= #{address} WHERE EMAIL = #{email}
+	</insert>
+</mapper>

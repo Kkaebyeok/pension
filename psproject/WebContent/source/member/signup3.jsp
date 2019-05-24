@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html >
-<html lang="ko">
-<head>
-<jsp:include page="common/member_header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <script>
 	$(function() {
 		// 상세 주소 검색 후 마우스 이벤트 위임
@@ -151,12 +148,9 @@
 		
 	});
 </script>
-</head>
-<body>
 <div class="wrap">
-	<jsp:include page="../header.jsp"/>
-	<div class="position">
-		<div class="content">
+	<div class="content">
+		<div class="join-wrapper">
 			<div>
 				<h1>회원가입</h1>
 				<ul class="join_step">
@@ -234,7 +228,5 @@
 			</div>
 		</div>
 	</div>
-<jsp:include page="../footer.jsp"/>
 </div>
-</body>
-</html>
+<jsp:include page="../footer.jsp"/>

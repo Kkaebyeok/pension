@@ -1,6 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script>
+<!doctype html>
+<html lang="ko">
+  <head>
+    <title>NolDaGa &mdash; 놀다가</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="images/icon/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="fonts/jua/css/jua.css">
+    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+	
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Page Css -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/member.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/pension.css">
+    
+	<link rel="stylesheet" type="text/css" href="css/daterangepicker.min.css" />
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script src="js/jquery.my.js"></script>
+    <script src="js/main.js"></script>
+	<script src="js/pension.js"></script>
+	<script src="js/member.js"></script>
+	<script type="text/javascript" src="js/jquery.daterangepicker.min.js"></script>
+    </head>
+  	<body>
+    <script>
 $(function() {
     $('.header').on('click', '.search-toggle', function(e) {
       var selector = $(this).data('selector');
@@ -33,7 +77,7 @@ $(function() {
                       <li><a href="logout">로그아웃</a></li>
                       </c:if>
                     </ul>
-                    <form action="list.do" method="get" class="search-box">
+                    <form action="list" method="get" class="search-box">
                       <input type="text" class="text search-input" name="search" placeholder="지역을 입력하세요." />
                       <input type="hidden" name="type" value="5">
                     </form>
@@ -56,16 +100,16 @@ $(function() {
             <div class="collapse navbar-collapse" id="navbarMenu">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="list.do">지역별 펜션</a>
+                  <a class="nav-link" href="list">지역별 펜션</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="list.do?type=2">스파 펜션</a>
+                  <a class="nav-link" href="list?type=2">스파 펜션</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="list.do?type=3">풀빌라 펜션</a>
+                  <a class="nav-link" href="list?type=3">풀빌라 펜션</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="list.do?type=4">워크샾/MT 펜션</a>
+                  <a class="nav-link" href="list?type=4">워크샾/MT 펜션</a>
                 </li>
               </ul>
             </div>

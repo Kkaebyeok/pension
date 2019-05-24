@@ -16,5 +16,3 @@
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/member.css">
-<script src="js/jquery.my.js"></script>
-<script src="js/member.js"></script>

@@ -1,16 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html >
-<html lang="ko">
-<head>
-	<jsp:include page="common/member_header.jsp"/>
-	<c:if test="${param.message=='fail'}">
-		<script>
-			alert("로그인에 실패했습니다")
-			location.href="login";
-		</script>
-	</c:if>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="../header.jsp"/>
+<c:if test="${param.message=='fail'}">
 	<script>
+		alert("로그인에 실패했습니다")
+		location.href="login";
+	</script>
+</c:if>
+<script>
 	// 유효성 검증
 	$(() => {
 		$(document.frm).submit(function(e) {
@@ -37,11 +35,9 @@
 			}
 		})
 	});
-	</script>
-</head>
-<body>
+</script>
 <div id="wrapper">
-	<jsp:include page="../header.jsp"/>
+	<div class="content">
 		<section>
 	        <div class="login_main title404">	
 				<form method="post" name="frm">
@@ -68,7 +64,6 @@
 				</form>
 	    	</div>
 		</section>
+		</div>
 	<jsp:include page="../footer.jsp"/>
 </div>
-</body>
-</html>

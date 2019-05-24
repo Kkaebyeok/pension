@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* Common */
-.wrap {max-width : 998px;margin: 0 auto;}
+.wrap {max-width : 998px; margin: 0 auto; padding: 30px 0;}
 hr{ clear: both;}
 html {scroll-behavior: smooth;}
 
@@ -35,8 +35,8 @@ figure.effect-marley:hover h5::after,figure.effect-marley:hover p {opacity: 1; t
 .psinfo li h4 {margin: 0; padding: 10px 50px 5px;}
 .info2 {float: right; margin-right: 30px; margin-bottom: 25px;}
 
-.cont_tab {display: -webkit-box; list-style: none; margin-top: 10px; border-top: double; border-bottom:double; margin-bottom: 0; padding: 0; transition:all .8;}
-.cont_tab_scrolled {position: fixed; top: 140px; background: #fff; z-index: 15; width: 998px; background: #eff2f1; border: 0;}
+.cont_tab {display: -webkit-box; list-style: none; margin-top: 10px; border-top: double; border-bottom:double; margin-bottom: 0; padding: 0; transition:all .8; clear: both;}
+.cont_tab_scrolled {position: fixed; top: -10px; background: #fff; z-index: 15; width: 998px; background: #eff2f1; border: 0;}
 .cont_tab li {text-align: center; width: 245px;}
 .cont_tab li a {color: black;}
 .cont_tab li a:hover {font-weight:bold;}
@@ -48,7 +48,7 @@ figure.effect-marley:hover h5::after,figure.effect-marley:hover p {opacity: 1; t
 .room li, .room li img {box-shadow: 1px 1px 7px 1px;}
 .room li img,.room li div:first-child {width: 267px; height: 178px; cursor: pointer;}
 .room li div:first-child:after {display: inline-block; content: ""; position: relative; bottom: 26px; left: 240px; z-index: 10; width: 24px; height: 24px; background: url(../images/pension/ico_picview.png) 0 0 no-repeat; background-size: 24px auto;}
-.room li div h4 {margin-bottom: 22px;}
+.room li div h4 {margin-bottom: 5px;}
 .room li div p,.room li div hr {margin: 8px 0;}
 .room li div button {width: 100%; color: #ddd; background: #333; border-radius: 5px; border: 0; cursor: pointer;}
 
@@ -72,13 +72,28 @@ figure.effect-marley:hover h5::after,figure.effect-marley:hover p {opacity: 1; t
 .review ul {padding: 0; margin: 0; list-style: none;}
 .review ul li {border-bottom: 2px solid #ddd;}
 .review ul div {display: inline-block;}
-.review ul div:first-child {width: 80%; padding: 15px;}
+.review ul li {padding: 15px;}
+.review ul div:first-child {width: 80%;}
 .review ul div:last-child {width: 20%;}
 .review ul li p {margin: 0;}
 
 .review-overall {width: 300px; margin: 0 auto; text-align: center;}
 .review-overall h4 {margin-bottom: 30px;}
 .review-overall i {color: #fc0;}
-.review-overall .progress{width: 50%; height: 20px; margin-left: 20px;}
+.review-overall .progress{width: 55.5%; height: 20px; margin-left: 20px;}
 .review-overall .progress-bar {background: #e55e54;}
-.review-overall > div.clearfix {display: flex; align-items: center;}
+.review-overall > div.clearfix {display: flex; align-items: center; margin: 10px auto;}
+
+
+.review-detail .reviewDetailImgWrapper, .reviewContentImgWrapper {overflow: hidden; height: 90px;}
+.review-detail .reviewDetailImgWrapper img {width: 100%;}
+.input-star i{margin : 5px; color:#fc0; cursor:pointer;}
+
+/* detail datepicker */
+.applyBtn {display: none;}
+#daterange {width: 300px;}
+.date-picker-wrapper.no-shortcuts {width: 274px; background: #ec8279; z-index: 100;}
+.date-picker-wrapper .month-wrapper {width: 274px !important; border-color: #e55e54 !important;}
+.date-picker-wrapper .month-wrapper table.month1 {width: 100%;}
+.date-picker-wrapper .month-wrapper table.month1 th,
+.date-picker-wrapper .month-wrapper table.month1 td {width: 14.28%;}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reserve">
+<select id="reserveDetail" resultType="shop.noldaga.reserve.vo.ReserveVo" parameterType="shop.noldaga.reserve.vo.ReserveVo">
+	SELECT
+		p.psidx, r.rmidx, rmtitle, pstitle,
+	    (
+	        select 
+	            sum(getprice((to_date(#{startdate}) + rownum - 1), r.rmidx)) price
+	        from all_objects
+	        where rownum &lt;= to_date(#{enddate}) - to_date(#{startdate})
+	    ) money,
+	    (
+	        select 
+	            round(avg(getprice((to_date(#{startdate}) + rownum - 1), r.rmidx)) / 100 ) * 100
+	        from all_objects
+	        where rownum &lt;= to_date(#{enddate}) - to_date(#{startdate})
+	    ) moneyunit,
+	    #{startdate} startdate,
+	    #{enddate} enddate,
+	    to_date(#{enddate}) - to_date(#{startdate}) days 
+	FROM PENSION P
+	JOIN ROOM R ON P.PSIDX = R.PSIDX
+	WHERE P.PSIDX = #{psidx} and r.rmidx = #{rmidx}
+</select>
+
+<insert id="insert" parameterType="shop.noldaga.reserve.vo.ReserveVo">
+	<selectKey keyProperty="rsidx" order="BEFORE" resultType="int">
+		select rs_seq.nextval from dual
+	</selectKey>
+	insert into reserve
+	(rsidx, psidx, rmidx, email, name, startdate, enddate, money, moneyunit, pstitle, rmtitle, days, tel
+	) values (#{rsidx}, #{psidx}, #{rmidx}, #{email}, #{name},
+		 #{startdate}, #{enddate}, #{money}, #{moneyunit}, #{pstitle}, #{rmtitle}, #{days}, #{tel}
+	)
+</insert>
+
+<select id="selectByRsidx" resultType="shop.noldaga.reserve.vo.ReserveVo">
+	select 
+	rsidx, psidx, rmidx, email, name, to_char(startdate, 'yy-mm-dd') startdate, to_char(enddate, 'yy-mm-dd') enddate, 
+	money, moneyunit, pstitle, rmtitle, days, tel 
+	from reserve 
+	where rsidx = #{rsidx}
+</select>
+
+<select id="selectByEmail" resultType="shop.noldaga.reserve.vo.ReserveVo">
+	select rsidx, psidx, rmidx, email, name, 
+	    to_char(startdate, 'yy-mm-dd') startdate, to_char(enddate, 'yy-mm-dd') enddate, 
+	    money, moneyunit, pstitle, rmtitle, days, tel 
+	from reserve 
+	where email = #{email} 
+	and to_char(sysdate,'yy-mm-dd') &lt;= to_char(startdate,'yy-mm-dd')
+</select>
+
+<delete id="cancel">
+	delete from reserve where rsidx = #{rsidx}
+</delete>
+</mapper>

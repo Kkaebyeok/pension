@@ -1,7 +1,8 @@
 (function($) {
-
+	$(function(){
+		
+	
 	'use strict';
-
 	// bootstrap dropdown hover
 
   // loader
@@ -175,7 +176,7 @@
 		} , { offset: '95%' } );
 	};
 	contentWayPoint();
-
+});
 
 
 })(jQuery);

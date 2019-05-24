@@ -1,9 +1,5 @@
-col-md-6 div p {float: left;}
-		@media (min-width: 360px) {
-			.logo{
-				width:85px;
-				margin-top:7px; }
-			.phone1 {
+.col-md-4 .blog-entry img {width: 100%; max-height: 197px;}
+@media (min-width: 360px) {.logo{width:85px;margin-top:7px; }.phone1 {
 		      	max-width: 100%;
 		      	background-position-x: 24%; }
 			.phone2 {
